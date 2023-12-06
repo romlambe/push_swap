@@ -6,12 +6,11 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:58:06 by romlambe          #+#    #+#             */
-/*   Updated: 2023/11/29 15:53:23 by romlambe         ###   ########.fr       */
+/*   Updated: 2023/12/06 12:16:11 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	ft_atoi(char *str)
 {
@@ -39,24 +38,36 @@ int	ft_atoi(char *str)
 	}
 	return (res);
 }
-
-t_list	remplir_list(int ac, char **av)
+t_list	*new_node(void *content)
 {
-	int	i;
-	t_list	*lst_a;
-	t_list	*temp;
+	t_list	*lst;
 
+	lst = (t_list *)malloc(sizeof(t_list));
+	if (!lst)
+		return (0);
+	lst->content = content;
+	lst->next = NULL;
+	return (lst);
+}
+t_list	*fill_list(t_list **lst, int ac, char **av)
+{
+	t_list	*temp;
+	t_list	*new;
+	int		i;
+
+	if (!(*lst) || !lst)
+		return ;
 	i = 0;
-	lst_a = (t_list *)malloc(sizeof(t_list));
-	temp = *lst_a;
-	while(ac - 1 >= 0)
+	temp = *lst;
+	while (ac - 1 > 0)
 	{
-		(temp)->content = ft_atoi(av[i]);
-		temp = (temp)->next;
+		temp = new_node(ft_atoi(av[i]));
+		lst_add_back(lst, new);
+		temp = temp->next;
 		ac--;
 		i++;
 	}
-	return (*lst_a);
+	return (*lst);
 }
 int	lst_size(t_list *lst)
 {
@@ -94,158 +105,6 @@ t_list	*lst_second_to_last(t_list **lst)
 	while ((temp)->next->next != NULL)
 		temp = temp->next;
 	return (temp);
-}
-
-void	ft_sa(t_list **lst_a, int print)
-{
-	t_list *temp;
-
-	if (!*lst_a || !(*lst_a)->next)
-		return ;
-	temp = *lst_a;
-	*lst_a = (*lst_a)->next;
-	(*lst_a)->next = temp;
-	if (print == 1)
-		write(1, "sa\n", 3);
-}
-
-void	ft_sb(t_list **lst_b, int print)
-{
-	t_list *temp;
-
-	if (!*lst_b || !(*lst_b)->next)
-		return ;
-	temp = *lst_b;
-	*lst_b = (*lst_b)->next;
-	(*lst_b)->next = temp;
-	if (print == 1)
-		write(1, "sb\n", 3);
-}
-
-void	ft_ss(t_list **lst_a, t_list **lst_b)
-{
-	t_list *temp_a;
-	t_list *temp_b;
-
-	if ((!lst_b || !(*lst_b)->next) || (!lst_a || !(*lst_a)->next))
-		return ;
-	write(1, "ss\n", 3);
-	ft_sa(lst_a, 0);
-	ft_sb(lst_b, 0);
-
-}
-
-void	ft_pa(t_list **lst_a, t_list **lst_b)
-{
-	t_list	*temp;
-
-	if (!lst_a || !lst_b)
-		return ;
-	write(1, "pa\n", 3);
-	temp = *lst_b;
-	*lst_b = temp->next;
-	temp->next = *lst_a;
-	*lst_a= temp;
-}
-
-void	ft_pb(t_list **lst_a, t_list **lst_b)
-{
-	t_list	*temp;
-
-	if (!lst_a || !lst_b)
-		return ;
-	write(1, "pb\n", 3);
-	temp = *lst_a;
-	*lst_a = temp->next;
-	temp->next = *lst_b;
-	*lst_b = temp;
-}
-
-void	ft_ra(t_list **lst_a, int print)
-{
-	t_list	*first_to_last;
-	t_list	*second_to_last;
-
-	if (!lst_a || !(*lst_a)->next)
-		return ;
-	first_to_last = (*lst_a);
-	second_to_last = lst_last(lst_a);
-	(*lst_a) = first_to_last->next;
-	second_to_last->next = first_to_last;
-	first_to_last->next = NULL;
-	if (print == 1)
-		write(1, "ra\n", 3);
-}
-
-void	ft_rb(t_list **lst_b, int print)
-{
-	t_list	*first_to_last;
-	t_list	*second_to_last;
-	if (!lst_b || !(*lst_b)->next)
-		return ;
-	first_to_last = (*lst_b);
-	second_to_last = lst_last(lst_b);
-	(*lst_b) = first_to_last;
-	second_to_last->next = first_to_last;
-	first_to_last->next = NULL;
-	if (print == 1)
-		write(1, "rb\n", 3);
-}
-
-void	ft_rr(t_list **lst_a, t_list **lst_b, int print)
-{
-	if ((!lst_a || !(*lst_a)->next) || (!lst_b || !(*lst_b)->next))
-		return ;
-	ft_ra(lst_a, 0);
-	ft_rb(lst_b, 0);
-	write(1, "rr\n", 3);
-}
-
-void	ft_rra(t_list **lst_a, int print)
-{
-	t_list	*new_last;
-	t_list	*last_to_first;
-
-	if (!lst_a || !(*lst_a)->next)
-		return ;
-
-	last_to_first = lst_last(lst_a);
-	new_last= lst_second_to_last(lst_a);
-
-	last_to_first->next = (*lst_a);
-	(*lst_a) = last_to_first;
-	new_last->next = NULL;
-
-	if (print == 1)
-		write(1,"rra\n", 4);
-}
-
-void	ft_rrb(t_list **lst_b, int print)
-{
-	t_list	*new_last;
-	t_list	*last_to_first;
-
-	if (!lst_b || !(*lst_b)->next)
-		return ;
-
-	last_to_first = lst_last(lst_b);
-	new_last= lst_second_to_last(lst_b);
-
-	last_to_first->next = (*lst_b);
-	(*lst_b) = last_to_first;
-	new_last->next = NULL;
-
-	if (print == 1)
-		write(1,"rrb\n", 4);
-}
-
-void	ft_rrr(t_list **lst_a, t_list **lst_b, int print)
-{
-	if ((!lst_a || !(*lst_a)->next) || (!lst_b) || (*lst_b)->next)
-		return ;
-	ft_rra(lst_a, 0);
-	ft_rrb(lst_b, 0);
-	write (1, "rrr\n", 4);
 }
 
 void    add_node(t_list **lst, int content)
@@ -348,6 +207,13 @@ int	count_rra(t_list **lst, int content)
 		temp = temp->next;
 	}
 	return(res = (size - count) + 1);
+}
+t_list	*swap_2_numbers(t_list **lst, t_list *index)
+{
+	ft_index(lst);
+	if ((*lst)->index > (*lst)->next->index) //lst->next->index
+		sa(lst);
+	return (*lst);
 }
 
 //algo simple
