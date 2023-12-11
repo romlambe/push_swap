@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:08:05 by romlambe          #+#    #+#             */
-/*   Updated: 2023/12/04 16:52:01 by romlambe         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:32:42 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,49 @@ void	ft_rb(t_list **lst_b, int print)
 		write(1, "rb\n", 3);
 }
 
-void	ft_rr(t_list **lst_a, t_list **lst_b, int print)
+void	ft_rr(t_list **lst_a, t_list **lst_b)
 {
 	if ((!lst_a || !(*lst_a)->next) || (!lst_b || !(*lst_b)->next))
 		return ;
 	ft_ra(lst_a, 0);
 	ft_rb(lst_b, 0);
 	write(1, "rr\n", 3);
+}
+
+//Count the number of movement
+
+int	count_ra(t_list **lst, int content)
+{
+	int		count;
+	t_list	*temp;
+	if(!(*lst) || !lst )
+		return (0);
+	count = -1;
+	temp = *lst;
+	while(temp->content != content)
+	{
+		count++;
+		temp = temp->next;
+	}
+	return(count);
+}
+
+int	count_rra(t_list **lst, int content)
+{
+	int		count;
+	int		size;
+	int		res;
+	t_list	*temp;
+
+	if (!(*lst) || !lst)
+		return(0);
+	count = 0;
+	size = lst_size(*lst);
+	temp = *lst;
+	while(temp->next->content != content)
+	{
+		count++;
+		temp = temp->next;
+	}
+	return(res = (size - count) + 1);
 }

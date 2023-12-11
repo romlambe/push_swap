@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:06:44 by romlambe          #+#    #+#             */
-/*   Updated: 2023/12/06 16:32:18 by romlambe         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:51:23 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	ft_sb(t_list **lst_b, int print)
 
 void	ft_ss(t_list **lst_a, t_list **lst_b)
 {
-	t_list	*temp_a;
-	t_list	*temp_b;
+	// t_list	*temp_a;
+	// t_list	*temp_b;
 
 	if ((!lst_b || !(*lst_b)->next) || (!lst_a || !(*lst_a)->next))
 		return ;

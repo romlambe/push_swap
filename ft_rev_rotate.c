@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:08:43 by romlambe          #+#    #+#             */
-/*   Updated: 2023/12/04 16:50:48 by romlambe         ###   ########.fr       */
+/*   Updated: 2023/12/11 11:57:00 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_rrb(t_list **lst_b, int print)
 		write(1, "rrb\n", 4);
 }
 
-void	ft_rrr(t_list **lst_a, t_list **lst_b, int print)
+void	ft_rrr(t_list **lst_a, t_list **lst_b)
 {
 	if ((!lst_a || !(*lst_a)->next) || (!lst_b) || (*lst_b)->next)
 		return ;

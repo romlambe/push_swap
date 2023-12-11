@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:48:34 by romlambe          #+#    #+#             */
-/*   Updated: 2023/12/06 16:15:11 by romlambe         ###   ########.fr       */
+/*   Updated: 2023/12/11 15:37:12 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	ft_pa(t_list **lst_a, t_list **lst_b);
 void	ft_pb(t_list **lst_a, t_list **lst_b);
 void	ft_ra(t_list **lst_a, int print);
 void	ft_rb(t_list **lst_b, int print);
-void	ft_rr(t_list **lst_a, t_list **lst_b, int print);
+void	ft_rr(t_list **lst_a, t_list **lst_b);
 void	ft_rra(t_list **lst_a, int print);
 void	ft_rrb(t_list **lst_b, int print);
-void	ft_rrr(t_list **lst_a, t_list **lst_b, int print);
+void	ft_rrr(t_list **lst_a, t_list **lst_b);
 
 int	ft_atoi(char *str);
 t_list	*new_node(void *content);
