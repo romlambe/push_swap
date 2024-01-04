@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/15 13:48:34 by romlambe          #+#    #+#             */
-/*   Updated: 2023/12/11 15:37:12 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:14:17 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include "unistd.h"
 # include "stdlib.h"
 # include <stdio.h>
+# include <limits.h>
 
 typedef	struct	s_list
 {
@@ -38,7 +39,7 @@ void	ft_rrr(t_list **lst_a, t_list **lst_b);
 int	ft_atoi(char *str);
 t_list	*new_node(void *content);
 t_list	*fill_list(t_list **lst, int ac, char **av);
-int	lst_size(t_list *lst);
+int	lst_size(t_list **lst);
 t_list	*lst_last(t_list **lst);
 t_list	*lst_second_to_last(t_list **lst);
 int	count_ra(t_list **lst, int content);

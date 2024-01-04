@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 12:25:51 by romlambe          #+#    #+#             */
-/*   Updated: 2023/12/11 15:37:26 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:29:41 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,19 @@ t_list	*lst_second_to_last(t_list **lst)
 	return (temp);
 }
 
-int	lst_size(t_list *lst)
+int	lst_size(t_list **lst)
 {
 	int	i;
+	t_list *temp;
 
 	i = 0;
-	if (!lst)
+	temp = *lst;
+	if (!temp)
 		return (0);
-	while (lst->next)
+	while (temp)
 	{
 		i++;
-		lst = lst->next;
+		temp = (temp)->next;
 	}
 	return (i);
 }

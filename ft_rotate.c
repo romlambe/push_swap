@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:08:05 by romlambe          #+#    #+#             */
-/*   Updated: 2023/12/11 15:32:42 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/01/04 16:15:10 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	count_rra(t_list **lst, int content)
 	if (!(*lst) || !lst)
 		return(0);
 	count = 0;
-	size = lst_size(*lst);
+	size = lst_size(lst);
 	temp = *lst;
 	while(temp->next->content != content)
 	{
