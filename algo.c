@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_ft.c                                     :+:      :+:    :+:   */
+/*   algo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/15 13:58:06 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/06 18:15:04 by romlambe         ###   ########.fr       */
+/*   Created: 2024/01/05 14:29:41 by romlambe          #+#    #+#             */
+/*   Updated: 2024/01/05 15:11:00 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-//algo simple
+#include "push_swap.h"
 
-// while (!est_triee(pa) || pa != NULL)
-// {
-// 	int lpp = le_plus_petit(ra);
-// 	int nb_ra = ft_nb_ra(pa);
-// 	int nb_rra = ft_nb_rra(pa);
-// 	if nb_ra > nb_rra
-// 		while(nb_ra != 0)
-// 			ra;
-// 			nb_ra--;
-// 	if nb_rra >= nb_ra
-// 		while (nb_rra != 0)
-// 			rra;
-// 			nb_rra != 0;
-// }
+int	size_of_list(t_list **lsta, t_list **lstb)
+{
+	int	size;
+
+	if (!(*lsta))
+		return (0);
+	size = lst_size(lsta);
+	if (size == 3);
+		sort_3_numbers(&lsta);
+	if (size == 4 || size == 5)
+		swap_5_numbers(&lsta, &lstb);
+}
+
+void	sort_100_numbers(t_list **lsta, t_data *data)
+{
+	data->median = (lst_size(lsta) / 2);
+	
+}

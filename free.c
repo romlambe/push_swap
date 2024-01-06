@@ -1,54 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list.c                                          :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/11 12:25:51 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/04 16:29:41 by romlambe         ###   ########.fr       */
+/*   Created: 2024/01/06 17:54:09 by romlambe          #+#    #+#             */
+/*   Updated: 2024/01/06 17:58:28 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*lst_last(t_list **lst)
+void	del_nodes(t_list **lst)
 {
 	t_list	*temp;
 
-	if (!lst)
-		return (NULL);
 	temp = *lst;
-	while (temp->next)
-		temp = temp->next;
-	return (temp);
+	while(*lst)
+	{
+		*lst = temp->next;
+		free(temp);
+		temp = *lst;
+	}
 }
 
-t_list	*lst_second_to_last(t_list **lst)
-{
-	t_list	*temp;
-
-	if (!lst || !(*lst)->next)
-		return (NULL);
-	temp = *lst;
-	while ((temp)->next->next != NULL)
-		temp = temp->next;
-	return (temp);
-}
-
-int	lst_size(t_list **lst)
+void	free_array(char **array)
 {
 	int	i;
-	t_list *temp;
 
 	i = 0;
-	temp = *lst;
-	if (!temp)
-		return (0);
-	while (temp)
+	while (array[i])
 	{
+		free(array[i]);
 		i++;
-		temp = (temp)->next;
 	}
-	return (i);
+	free(array);
+	return ;
 }
