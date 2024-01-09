@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:43:35 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/06 18:58:49 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/01/09 23:35:29 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,14 @@ char	*ft_strncpy(char *dest, const char *src, int size)
 	int	i;
 
 	i = 0;
+	if (size == 0)
+		return (NULL);
 	while (src[i] && i < size)
 	{
 		dest[i] = src[i];
 		i++;
 	}
-	dest[i] = 0;
+	dest[i] = '\0';
 	return (dest);
 }
 
@@ -31,16 +33,18 @@ int	count_words(char *str)
 	int	i;
 	int	words;
 
+	i = 0;
+	words = 0;
 	while(str[i])
 	{
 		while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 			i++;
 		if (str[i] && (str[i] != ' ' && str[i] != '\t'))
 			words++;
-		while (str[i] && (str[i] == ' ' || str[i] == '\t'))
+		while (str[i] && (str[i] != ' ' && str[i] != '\t'))
 			i++;
 	}
-	return(words);
+	return (words);
 }
 
 void	check_string(char **new, char *str)
@@ -60,8 +64,8 @@ void	check_string(char **new, char *str)
 			i++;
 		if (j < i)
 		{
-			new[++words] = (char **)malloc(sizeof(char *)  * ((i - j) + 1));
-			if (!new)
+			new[++words] = (char *)malloc(sizeof(char )  * ((i - j) + 1));
+			if (!new[words])
 			{
 				free_array(new);
 				return ;
@@ -69,6 +73,7 @@ void	check_string(char **new, char *str)
 			ft_strncpy(new[words], &str[j], i - j);
 		}
 	}
+	new[words + 1] = NULL;
 }
 
 char	**ft_split(char *str)

@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 16:48:56 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/06 17:10:12 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/01/09 23:31:02 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,13 @@ int	is_digit(const char *str)
 {
 	int	i;
 
+	if (!str)
+		return (-1);
 	i = 0;
 	while (str[i])
 	{
 		if (!((str[i] >= '0' && str[i] <= '9')
-			|| (str[0] == '-' && str[1] >= '0' && str <= '9')))
+			|| (str[0] == '-' && str[1] >= '0' && str[1] <= '9')))
 			return (-1);
 		i++;
 	}
@@ -36,14 +38,14 @@ int	available_size(long long digit)
 
 long long	atoi_conversion(char *str)
 {
-	int	i;
-	int	sign;
-	int	res;
+	int			i;
+	int			sign;
+	long long	res;
 
 	i = 0;
 	sign = 1;
 	res = 0;
-	while (str[i] == 32 || (str[i] >= '9' && str[i] <= '13'))
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	while (str[i] == '-' || str[i] == '+')
 	{
@@ -71,14 +73,14 @@ int	ft_atoi_ps(char *str)
 	digit = is_digit(str);
 	if (digit == -1)
 	{
-		write (1, "Error", 6);
+		write (1, "Error\n", 6);
 		return (-1);
 	}
 	res = atoi_conversion(str);
 	digit_size = available_size(res);
 	if (digit_size == -1)
 	{
-		write (1, "Error", 6);
+		write (1, "Error\n", 6);
 		return (-1);
 	}
 	return ((int)res);

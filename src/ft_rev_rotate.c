@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:08:43 by romlambe          #+#    #+#             */
-/*   Updated: 2023/12/11 11:57:00 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/01/09 13:47:20 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ void	ft_rra(t_list **lst_a, int print)
 {
 	t_list	*new_last;
 	t_list	*last_to_first;
+	t_list	*temp;
 
 	if (!lst_a || !(*lst_a)->next)
 		return ;
-	last_to_first = lst_last(lst_a);
+	temp = *lst_a;
+	last_to_first = lst_last(temp);
 	new_last = lst_second_to_last(lst_a);
 	last_to_first->next = (*lst_a);
 	(*lst_a) = last_to_first;
@@ -32,10 +34,12 @@ void	ft_rrb(t_list **lst_b, int print)
 {
 	t_list	*new_last;
 	t_list	*last_to_first;
+	t_list	*temp;
 
 	if (!lst_b || !(*lst_b)->next)
 		return ;
-	last_to_first = lst_last(lst_b);
+	temp = *lst_b;
+	last_to_first = lst_last(temp);
 	new_last = lst_second_to_last(lst_b);
 	last_to_first->next = (*lst_b);
 	(*lst_b) = last_to_first;

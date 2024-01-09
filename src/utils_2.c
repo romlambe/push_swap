@@ -6,44 +6,54 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:26:00 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/06 18:26:19 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/01/09 14:01:26 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*find_smallest_node(t_list **lst)
+int	size_array(char **array)
 {
-	t_list *min;
-	t_list *temp;
+	int	i;
 
-	min = NULL;
-	temp = *lst;
-	while (temp)
-	{
-		if(temp->index == -1 && (min == NULL || temp->content < min->content))
-			min = temp;
-		temp = temp->next;
-	}
-	return (min);
+	i = 0;
+	while(array[i])
+		i++;
+	return(i + 1);
 }
 
-t_list	*define_index(t_list **lst)
-{
-	t_list	*min;
-	int		index;
+// t_list	*find_smallest_node(t_list **lst)
+// {
+// 	t_list *min;
+// 	t_list *temp;
 
-	index = 1;
-	while(1)
-	{
-		min = find_smallest_node(lst);
-		if (min == NULL)
-			return (NULL);
-		min->index = index;
-		index++;
-	}
-	return (min);
-}
+// 	min = NULL;
+// 	temp = *lst;
+// 	while (temp)
+// 	{
+// 		if(temp->index == -1 && (min == NULL || temp->content < min->content))
+// 			min = temp;
+// 		temp = temp->next;
+// 	}
+// 	return (min);
+// }
+
+// t_list	*define_index(t_list **lst)
+// {
+// 	t_list	*min;
+// 	int		index;
+
+// 	index = 1;
+// 	while(1)
+// 	{
+// 		min = find_smallest_node(lst);
+// 		if (min == NULL)
+// 			return (NULL);
+// 		min->index = index;
+// 		index++;
+// 	}
+// 	return (min);
+// }
 
 t_list *find_smallest_index(t_list **lsta)
 {
@@ -88,4 +98,34 @@ t_list	*find_second_smallest_index(t_list **lst)
 	}
 	return (second_smallest_node);
 
+}
+
+int	find_highest_nb(t_list *lst)
+{
+	int	highest_num;
+
+	highest_num = lst->content;
+	lst = lst->next;
+	while (lst)
+	{
+		if (lst->content > highest_num)
+			highest_num = lst->content;
+		lst = lst->next;
+	}
+	return (highest_num);
+}
+
+int	find_highest_index(t_list *lst, int max)
+{
+	int	i;
+
+	i = 0;
+	while(lst)
+	{
+		if (lst->content == max)
+			return (i);
+		lst = lst->next;
+		i++;
+	}
+	return (-1);
 }

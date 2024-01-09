@@ -6,13 +6,13 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:18:33 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/06 18:24:07 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/01/09 13:59:31 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	*swap_2_numbers(t_list **lst)
+void	swap_2_numbers(t_list **lst)
 {
 	int	first_index;
 	int	second_index;
@@ -65,7 +65,7 @@ void	both_lowest_at_bottom(t_list **lst)
 
 	if (!(*lst) && !(*lst)->next)
 		return ;
-	first_smallest_node = find_smallest_node(lst);
+	first_smallest_node = find_smallest_index(lst);
 	second_smallest_node = find_second_smallest_index(lst);
 	temp = *lst;
 	// temp = temp->next;
