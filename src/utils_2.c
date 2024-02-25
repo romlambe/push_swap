@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:26:00 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/09 14:01:26 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:14:46 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,45 +17,12 @@ int	size_array(char **array)
 	int	i;
 
 	i = 0;
-	while(array[i])
+	while (array[i])
 		i++;
-	return(i + 1);
+	return (i + 1);
 }
 
-// t_list	*find_smallest_node(t_list **lst)
-// {
-// 	t_list *min;
-// 	t_list *temp;
-
-// 	min = NULL;
-// 	temp = *lst;
-// 	while (temp)
-// 	{
-// 		if(temp->index == -1 && (min == NULL || temp->content < min->content))
-// 			min = temp;
-// 		temp = temp->next;
-// 	}
-// 	return (min);
-// }
-
-// t_list	*define_index(t_list **lst)
-// {
-// 	t_list	*min;
-// 	int		index;
-
-// 	index = 1;
-// 	while(1)
-// 	{
-// 		min = find_smallest_node(lst);
-// 		if (min == NULL)
-// 			return (NULL);
-// 		min->index = index;
-// 		index++;
-// 	}
-// 	return (min);
-// }
-
-t_list *find_smallest_index(t_list **lsta)
+t_list	*find_smallest_index(t_list **lsta)
 {
 	int		smallest;
 	t_list	*smallest_node;
@@ -97,7 +64,6 @@ t_list	*find_second_smallest_index(t_list **lst)
 		temp = temp->next;
 	}
 	return (second_smallest_node);
-
 }
 
 int	find_highest_nb(t_list *lst)
@@ -120,7 +86,7 @@ int	find_highest_index(t_list *lst, int max)
 	int	i;
 
 	i = 0;
-	while(lst)
+	while (lst)
 	{
 		if (lst->content == max)
 			return (i);

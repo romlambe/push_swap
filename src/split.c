@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:43:35 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/09 23:35:29 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/01/16 12:14:56 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	count_words(char *str)
 
 	i = 0;
 	words = 0;
-	while(str[i])
+	while (str[i])
 	{
 		while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 			i++;
@@ -64,7 +64,7 @@ void	check_string(char **new, char *str)
 			i++;
 		if (j < i)
 		{
-			new[++words] = (char *)malloc(sizeof(char )  * ((i - j) + 1));
+			new[++words] = (char *)malloc(sizeof(char ) * ((i - j) + 1));
 			if (!new[words])
 			{
 				free_array(new);
@@ -78,9 +78,9 @@ void	check_string(char **new, char *str)
 
 char	**ft_split(char *str)
 {
-	char **new;
+	char	**new;
 
-	new =(char **)malloc(sizeof(char *) * (count_words(str) + 1));
+	new = (char **)malloc(sizeof(char *) * (count_words(str) + 1));
 	if (!new)
 		return (NULL);
 	check_string(new, str);

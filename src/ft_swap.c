@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:06:44 by romlambe          #+#    #+#             */
-/*   Updated: 2023/12/11 11:51:23 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:02:24 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,38 +42,35 @@ void	ft_sb(t_list **lst_b, int print)
 
 void	ft_ss(t_list **lst_a, t_list **lst_b)
 {
-	// t_list	*temp_a;
-	// t_list	*temp_b;
-
-	if ((!lst_b || !(*lst_b)->next) || (!lst_a || !(*lst_a)->next))
+	if (!(*lst_a) || !(*lst_b))
 		return ;
 	write(1, "ss\n", 3);
 	ft_sa(lst_a, 0);
 	ft_sb(lst_b, 0);
 }
 
-void	ft_pa(t_list **lst_a, t_list **lst_b)
+void	ft_pa(t_list **lsta, t_list **lstb)
 {
 	t_list	*temp;
 
-	if (!lst_a || !lst_b)
+	if (!(*lstb))
 		return ;
 	write(1, "pa\n", 3);
-	temp = *lst_b;
-	*lst_b = temp->next;
-	temp->next = *lst_a;
-	*lst_a = temp;
+	temp = (*lstb);
+	(*lstb) = (*lstb)->next;
+	temp->next = (*lsta);
+	(*lsta) = temp;
 }
 
 void	ft_pb(t_list **lst_a, t_list **lst_b)
 {
 	t_list	*temp;
 
-	if (!lst_a || !lst_b)
+	if (!*lst_a)
 		return ;
 	write(1, "pb\n", 3);
-	temp = *lst_a;
-	*lst_a = temp->next;
-	temp->next = *lst_b;
-	*lst_b = temp;
+	temp = (*lst_a);
+	(*lst_a) = (*lst_a)->next;
+	temp->next = (*lst_b);
+	(*lst_b) = temp;
 }

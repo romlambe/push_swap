@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:59:17 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/09 13:50:21 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/01/16 12:20:34 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ int	main(int ac, char **av)
 	}
 	else
 		result = ft_convert_format(ac, av);
-	if (fill_list(&lsta, ac, result) ==  NULL)
-		return(-1);
+	if (fill_list(&lsta, ac, result) == NULL)
+		return (-1);
 	tab = sort_array(lsta);
 	sort_lst(&lsta, &lstb, tab, &data);
 	del_nodes(&lsta);
 	free(tab);
-	return 0;
+	return (0);
 }

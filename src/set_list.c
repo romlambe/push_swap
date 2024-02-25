@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/04 17:27:03 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/09 13:58:21 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:25:54 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	**ft_convert_format(int ac, char **av)
 	while (i < ac - 1)
 	{
 		res[i] = ft_strdup_ps(av[i + 1]);
-		if (!res[i])
+		if (!res)
 			return (free_array(res), NULL);
 		i++;
 	}
@@ -111,7 +111,7 @@ t_list	*fill_list(t_list **lst, int ac, char **av)
 		i++;
 	}
 	if (check_doubles(*lst) == -1)
-		return(free_array(av), NULL);
+		return (free_array(av), NULL);
 	i = 0;
 	free_array(av);
 	return (*lst);

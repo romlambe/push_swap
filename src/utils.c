@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/06 18:13:31 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/09 13:39:22 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/21 16:40:00 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,26 @@
 
 int	lst_size(t_list **lst)
 {
-	int	i;
-	t_list *temp;
+	int		i;
+	t_list	*temp;
 
 	i = 0;
 	temp = *lst;
-	if (!temp)
-		return (0);
 	while (temp)
 	{
 		i++;
-		temp = (temp)->next;
+		temp = temp->next;
 	}
 	return (i);
 }
+
 t_list	*lst_last(t_list *lst)
 {
-	t_list	*temp;
-
 	if (!lst)
 		return (NULL);
-	temp = lst;
-	while (temp->next)
-		temp = temp->next;
-	return (temp);
+	while (lst->next)
+		lst = lst->next;
+	return (lst);
 }
 
 t_list	*lst_second_to_last(t_list **lst)
@@ -55,7 +51,8 @@ t_list	*lst_second_to_last(t_list **lst)
 void	lst_add_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
-	if (!lst)
+
+	if (!(lst))
 		return ;
 	if (!(*lst))
 		*lst = new;

@@ -1,40 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   ft_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/06 17:54:09 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/16 12:17:34 by romlambe         ###   ########.fr       */
+/*   Created: 2023/12/11 12:25:51 by romlambe          #+#    #+#             */
+/*   Updated: 2024/02/21 14:37:36 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	del_nodes(t_list **lst)
-{
-	t_list	*temp;
-
-	temp = *lst;
-	while (*lst)
-	{
-		*lst = temp->next;
-		free(temp);
-		temp = *lst;
-	}
-}
-
-void	free_array(char **array)
+int	ft_strlen_ps(char *str)
 {
 	int	i;
 
 	i = 0;
-	while (array[i])
-	{
-		free(array[i]);
+	while (str[i])
 		i++;
-	}
-	free(array);
-	return ;
+	return (i);
 }

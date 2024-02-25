@@ -6,7 +6,7 @@
 /*   By: romlambe <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/04 16:08:05 by romlambe          #+#    #+#             */
-/*   Updated: 2024/01/09 13:48:48 by romlambe         ###   ########.fr       */
+/*   Updated: 2024/02/21 17:19:35 by romlambe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ void	ft_ra(t_list **lst_a, int print)
 	t_list	*first_to_last;
 	t_list	*second_to_last;
 
-	if (!lst_a || !(*lst_a)->next)
+	if (!(*lst_a) || !(*lst_a)->next)
 		return ;
-	first_to_last = (*lst_a);
+	first_to_last = *lst_a;
 	second_to_last = lst_last(*lst_a);
-	(*lst_a) = first_to_last->next;
+	*lst_a = first_to_last->next;
 	second_to_last->next = first_to_last;
 	first_to_last->next = NULL;
 	if (print == 1)
@@ -37,7 +37,7 @@ void	ft_rb(t_list **lst_b, int print)
 		return ;
 	first_to_last = (*lst_b);
 	second_to_last = lst_last(*lst_b);
-	(*lst_b) = first_to_last;
+	(*lst_b) = first_to_last->next;
 	second_to_last->next = first_to_last;
 	first_to_last->next = NULL;
 	if (print == 1)
@@ -59,16 +59,17 @@ int	count_ra(t_list **lst, int content)
 {
 	int		count;
 	t_list	*temp;
-	if(!(*lst) || !lst )
+
+	if (!(*lst) || !lst)
 		return (0);
 	count = -1;
 	temp = *lst;
-	while(temp->content != content)
+	while (temp->content != content)
 	{
 		count++;
 		temp = temp->next;
 	}
-	return(count);
+	return (count);
 }
 
 int	count_rra(t_list **lst, int content)
@@ -79,14 +80,14 @@ int	count_rra(t_list **lst, int content)
 	t_list	*temp;
 
 	if (!(*lst) || !lst)
-		return(0);
+		return (0);
 	count = 0;
 	size = lst_size(lst);
 	temp = *lst;
-	while(temp->next->content != content)
+	while (temp->next->content != content)
 	{
 		count++;
 		temp = temp->next;
 	}
-	return(res = (size - count) + 1);
+	return (res = (size - count) + 1);
 }
